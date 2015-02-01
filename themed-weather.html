@@ -1,0 +1,23 @@
+<head>
+  <title>themed-weather</title>
+</head>
+
+<body>
+  <h1>Welcome to Themed Weather!</h1>
+  Enter your zip code:
+  <form class="location-info">
+    <input type="text" name="text" placeholder="Enter your location" />
+  </form>
+
+  <div id="weather">
+    {{> weatherDetail details }}
+  </div>
+</body>
+
+<template name="weatherDetail">
+  <h2><i class="sw icon-{{code}}"></i>{{ temp }}&deg;</h2>
+  <ul>
+    <li>{{city}}, {{region}}</li>
+    <li class="currently">{{ currently }}</li>
+  </ul>
+</template>
