@@ -9,9 +9,11 @@
     <input type="text" name="text" placeholder="Enter your location" />
   </form>
 
-  <div id="weather">
-    {{> weatherDetail details }}
-  </div>
+  {{#if details}}
+    <div id="weatherz">
+      {{> weatherDetail details }}
+    </div>
+  {{/if}}
 </body>
 
 <template name="weatherDetail">
@@ -20,4 +22,5 @@
     <li>{{city}}, {{region}}</li>
     <li class="currently">{{ currently }}</li>
   </ul>
+  <h2>{{ customDescription temp }}</h2>
 </template>

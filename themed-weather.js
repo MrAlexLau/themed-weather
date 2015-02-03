@@ -1,14 +1,32 @@
-// WeatherDetails = new Meteor.Collection('weather-details');
-
 if (Meteor.isClient) {
-  // Meteor.subscribe("weather-details");
-
   Session.set("details", [])
 
   Template.body.helpers({
-    // weatherDetails: WeatherDetails.find({})
     details:  function () {
       return Session.get("details");
+    }
+  });
+
+  Template.weatherDetail.helpers({
+    customDescription: function(temp) {
+      if (temp < 32){
+        return "Did someone call Disney? Because it's frozen outside.";
+      }
+      else if (temp < 50) {
+        return "You're not going to die of the cold, but grab a jacket";
+      }
+      else if (temp < 70) {
+        return "Yup, it's pretty average out.";
+      }
+      else if (temp < 90) {
+        return _.sample([
+          "It's pretty freakin nice out. GO OUTSIDE.",
+          "Seriously stop looking at screens and go throw a frisbee"
+        ]);
+      }
+      else {
+        return "DEAR LORD IT'S HOT";
+      }
     }
   });
 
